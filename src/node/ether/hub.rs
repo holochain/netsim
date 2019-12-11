@@ -87,7 +87,7 @@ macro_rules! tuple_impl {
             $($ty: EtherNode + 'static,)*
         {
             type Item = ($($ty::Output,)*);
-            type Error = Box<Any + Send + 'static>;
+            type Error = Box<dyn Any + Send + 'static>;
 
             fn poll(&mut self) -> thread::Result<Async<Self::Item>> {
                 #![allow(non_snake_case)]

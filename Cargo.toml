@@ -11,7 +11,7 @@ readme = "README.md"
 edition = "2018"
 
 [dependencies]
-libc = "=0.2.50"
+libc = "=0.2.58"
 unwrap = "1.1"
 get_if_addrs = "0.5"
 future-utils = "0.12.1"

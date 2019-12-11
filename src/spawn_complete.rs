@@ -11,7 +11,7 @@ pub struct SpawnComplete<R> {
 
 impl<R> Future for SpawnComplete<R> {
     type Item = R;
-    type Error = Box<Any + Send + 'static>;
+    type Error = Box<dyn Any + Send + 'static>;
 
     fn poll(&mut self) -> thread::Result<Async<R>> {
         match self.ret_rx.poll() {

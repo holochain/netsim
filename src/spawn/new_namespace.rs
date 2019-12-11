@@ -47,7 +47,7 @@ where
         libc::CLONE_NEWUSER;
 
     struct CbData<R: Send + 'static> {
-        func: Box<FnBox<R> + Send + 'static>,
+        func: Box<dyn FnBox<R> + Send + 'static>,
         ret_tx: oneshot::Sender<thread::Result<R>>,
         uid: u32,
         gid: u32,

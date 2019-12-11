@@ -115,7 +115,7 @@ impl Stream for IpIface {
             }
 
             let mut buffer: [u8; libc::ETH_FRAME_LEN as usize] = unsafe {
-                mem::uninitialized()
+                mem::MaybeUninit::uninit().assume_init()
             };
             match self.fd.read(&mut buffer[..]) {
                 Ok(0) => return Ok(Async::Ready(None)),

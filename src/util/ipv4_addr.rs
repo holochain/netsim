@@ -26,7 +26,7 @@ pub trait Ipv4AddrExt {
     /// Returns `true` if this is a global IPv4 address
     fn is_global(&self) -> bool;
     /// Returns `true` if this is a reserved IPv4 address.
-    fn is_reserved(&self) -> bool;
+    fn address_is_reserved(&self) -> bool;
     /// Clasify the address.
     fn class(&self) -> Ipv4AddrClass;
     /// Create an `Ipv4Addr` representing a netmask
@@ -51,11 +51,11 @@ impl Ipv4AddrExt for Ipv4Addr {
         ||  self.is_multicast()
         ||  self.is_broadcast()
         ||  self.is_documentation()
-        ||  self.is_reserved()
+        ||  self.address_is_reserved()
         )
     }
 
-    fn is_reserved(&self) -> bool {
+    fn address_is_reserved(&self) -> bool {
         u32::from(*self) & 0xf000_0000 == 0xf000_0000
     }
 
